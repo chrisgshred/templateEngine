@@ -45,7 +45,36 @@ const addEmployee = () => {
             writeFile(html);
         }
     })
-}
+};
+
+const addEngineer = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is the engineer's name?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the engineer's ID?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the engineer's email address?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is the engineer's github url?"
+        }
+    ]).then((ans) => {
+        const engineer = new Engineer(ans.name, ans.id, ans.email, ans.github);
+        employees.push(engineer);
+        addEmployee();
+    })
+};
 
 const addManager = () => {
     inquirer.prompt([
@@ -76,7 +105,7 @@ const addManager = () => {
     })
 
 
-}
+};
 
 addManager()
 
